@@ -1,9 +1,13 @@
 import golosinas.*
 
 object mariano {
-	var golosinas = []
+	const golosinas = []
 	 
 	method comprar(_golosina) { golosinas.add(_golosina) }
+	
+	method comprarVariasGolosinas(gol){
+		gol.forEach({golo => golosinas.add(golo)})
+	}
 	
 	method desechar (_golosina) { golosinas.remove(_golosina) }
 	
@@ -63,9 +67,15 @@ object mariano {
 	method tieneGolosinaDeSabor(_sabor) {
 		return golosinas.any({_golosina => _golosina.sabor() == _sabor})
 	}
+	method baniar(unaGolosina){
+		const nuevaGolosina = new GolosinaBaniada(golosinaInterior = unaGolosina)
+		golosinas.add(nuevaGolosina)
+	}
 }
 
-
+object heladeraMariano{
+	var property humedad = 0
+}
 
 
 
